@@ -6,17 +6,17 @@ using UnityEngine;
 public class objectpool : MonoBehaviour
 {  
     [SerializeField]
-    private Queue<GameObject> pooledobject; // listte kullanabilirdik---queue de kuyruk oluþturduk 
+    private Queue<GameObject> pooledobject; 
     public GameObject objectpoolPrefab;
     public int poolsize;
     private void Awake()
     {
-        pooledobject = new Queue<GameObject>();   //örnekledik 
+        pooledobject = new Queue<GameObject>();   
         for(int i = 0; i < poolsize; i++)
         {
-            GameObject obj =Instantiate(objectpoolPrefab); // mermiyi oluþturduk
+            GameObject obj =Instantiate(objectpoolPrefab);
             obj.SetActive(false);    
-            pooledobject.Enqueue(obj); // ürettiðimiz prefablarý sýraya soktuk koleksiyona ekledik
+            pooledobject.Enqueue(obj); 
           
         }
 
@@ -24,10 +24,10 @@ public class objectpool : MonoBehaviour
 
    public GameObject GetPooledObject()
     {
-        // havuzdan çaðýrmamýz için gerekli olan metot 
-        GameObject obj=pooledobject.Dequeue();  // koleksiyondan çýkardýk 
-        obj.SetActive(true); // aktif ettik 
-        pooledobject.Enqueue(obj); // tekrar sýraya soktuk 
+      
+        GameObject obj=pooledobject.Dequeue(); 
+        obj.SetActive(true); 
+        pooledobject.Enqueue(obj); 
         return obj;
     }
 
